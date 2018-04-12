@@ -1,0 +1,31 @@
+# Main Conclusion
+#### We have very small number of frauds => easy to overfit
+
+
+#### Tree  outperfroms in out-of-sample:
+- (1) simple logit 
+- (2) SVM 
+
+#### Tuning of SVM and tree is hard and tricky
+#### Ensembling approach might be the best, i.e. random forest
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn import tree
+from sklearn import linear_model
+from sklearn import svm
+
+%matplotlib inline
+
+df_fraud = pd.read_csv(Data_folder + 'fraud_prep.csv')
+
+df_fraud.Class.value_counts()
+
+0    284315
+1       492
+Name: Class, dtype: int64
+
+print( "% of frauds is " + str( np.round( 100.*df_fraud.Class.value_counts()[1] / len(df_fraud), 2 ) ) )
+% of frauds is 0.17
